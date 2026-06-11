@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fusion X is an advanced web-based accessibility hub and assistive device simulator offering face-motion gaze control, augmentative voice assistance, switch-scanning step navigation, and AAC boards for differently-abled individuals.">
+  <title>Fusion X — Universal Assistive Technology Hub</title>
+  
+  <!-- Premium Icons and Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- Background Layer -->
+  <div class="app-background">
+    <div class="mesh-glow mesh-glow-1"></div>
+    <div class="mesh-glow mesh-glow-2"></div>
+    <div class="mesh-glow mesh-glow-3"></div>
+    <div class="cyber-grid-overlay"></div>
+  </div>
+
+  <!-- Main Layout Container -->
+  <div class="app-container">
+    
+    <!-- Top System Statusbar -->
+    <header class="system-statusbar">
+      <div class="statusbar-left">
+        <span class="status-badge" id="badge-clock"><i class="fa-regular fa-clock"></i> <span id="system-time">12:00 PM</span></span>
+        <!-- Vector battery chip -->
+        <span class="status-badge" id="badge-battery" style="display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-battery-three-quarters" id="battery-icon"></i>
+          <div class="battery-bar-wrapper">
+            <div id="battery-bar-fill"></div>
+          </div>
+          <span id="battery-text">82%</span>
+        </span>
+      </div>
+      <div class="statusbar-right">
+        <span class="status-badge" id="badge-gaze"><i class="fa-solid fa-eye"></i> Gaze: OFF</span>
+        <span class="status-badge" id="badge-scan"><i class="fa-solid fa-square-caret-right"></i> Scan: OFF</span>
+        <span class="status-badge" id="badge-voice"><i class="fa-solid fa-microphone"></i> Voice: LIVE</span>
+      </div>
+    </header>
+
+    <!-- Main Body Portal -->
+    <div class="app-body">
+      
+      <!-- Left Navigation Sidebar -->
+      <nav class="app-sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-logo">
+            <i class="fa-solid fa-universal-access"></i>
+          </div>
+          <div class="brand-text">
+            <h2>FUSION X</h2>
+            <span>Assistive Suite</span>
+          </div>
+        </div>
+
+        <div class="sidebar-menu">
+          <button class="menu-item active scan-target" id="nav-dashboard" data-tab="dashboard">
+            <i class="fa-solid fa-chart-pie"></i> Control Hub
+          </button>
+          <button class="menu-item scan-target" id="nav-aac" data-tab="aac">
+            <i class="fa-solid fa-comment-dots"></i> AAC Board
+          </button>
+          <button class="menu-item scan-target" id="nav-smarthome" data-tab="smarthome">
+            <i class="fa-solid fa-house-laptop"></i> Smart Home
+          </button>
+          <button class="menu-item scan-target" id="nav-calibration" data-tab="calibration">
+            <i class="fa-solid fa-video"></i> Eye & Gaze
+          </button>
+          <button class="menu-item scan-target" id="nav-settings" data-tab="settings">
+            <i class="fa-solid fa-sliders"></i> Access Settings
+          </button>
+        </div>
+
+        <div class="sidebar-footer">
+          <button class="sos-trigger scan-target" id="global-sos-btn">
+            <i class="fa-solid fa-triangle-exclamation"></i> Trigger SOS
+          </button>
+        </div>
+      </nav>
+
+      <!-- Main Assistive Viewport -->
+      <main class="app-viewport">
+        <div class="viewport-content" id="viewport-main-content">
+
+          <!-- TAB 1: CONTROL HUB DASHBOARD -->
+          <section class="viewport-tab active" id="tab-dashboard">
+            <div class="dashboard-grid">
+              
+              <!-- Welcome Glass Panel -->
+              <div class="glass-panel welcome-banner">
+                <div class="welcome-info">
+                  <h1 id="welcome-message">Hello User</h1>
+                  <p>Welcome to your Fusion X Command Center. Speak commands, tilt your head, or use switch hardware to interact.</p>
+                  
+                  <!-- Quick emergency speech trigger pad -->
+                  <div class="quick-speech-dock">
+                    <span style="font-family: var(--font-header); font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 6px;">
+                      <i class="fa-solid fa-bolt"></i> Quick-Speech Command Pad
+                    </span>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                      <button class="btn btn-secondary scan-target quick-speak-btn" data-text="I need a glass of water, please.">🥤 Water</button>
+                      <button class="btn btn-secondary scan-target quick-speak-btn" data-text="Please adjust my wheelchair seat position.">🦽 Adjust Seat</button>
+                      <button class="btn btn-secondary scan-target quick-speak-btn" data-text="I need assistance, please come here.">🙋‍♂️ Help</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="welcome-illustration">
+                  <i class="fa-solid fa-feather-pointed"></i>
+                </div>
+              </div>
+
+              <!-- Primary Assistive Controllers Switcher -->
+              <div class="glass-panel hub-modes-panel">
+                <div class="panel-header">
+                  <h2 class="panel-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Assistive Access Modes</h2>
+                </div>
+                <div class="modes-grid">
+                  
+                  <div class="mode-card scan-target" id="toggle-card-gaze">
+                    <div class="mode-icon"><i class="fa-solid fa-eye"></i></div>
+                    <h3>Camera Eye-Gaze Pointer</h3>
+                    <p>Track head tilt & face gestures via webcam to move a custom virtual cursor with automatic dwell-clicking.</p>
+                  </div>
+
+                  <div class="mode-card scanning-mode scan-target" id="toggle-card-scan">
+                    <div class="mode-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+                    <h3>Switch Scanning</h3>
+                    <p>Highlight elements sequentially. Trigger selection using your spacebar, single mouse click, or voice input.</p>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Visual Plotted Calibration Canvas Chart -->
+              <div class="glass-panel calibration-chart-panel">
+                <div class="panel-header">
+                  <h2 class="panel-title"><i class="fa-solid fa-chart-line"></i> Calibration Precision Index</h2>
+                  <span class="quick-voice-indicator" id="precision-percentage" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-success);">98.4% Live</span>
+                </div>
+                <div class="chart-canvas-wrapper">
+                  <canvas id="dashboard-chart"></canvas>
+                </div>
+              </div>
+
+              <!-- System Activity & Notification Feed -->
+              <div class="glass-panel system-status-column" style="grid-column: span 2;">
+                <div class="panel-header">
+                  <h2 class="panel-title"><i class="fa-solid fa-list-check"></i> System Logs</h2>
+                </div>
+                <div class="log-list" id="dashboard-log-feed">
+                  <!-- Log entries dynamically populated -->
+                  <div class="log-item">
+                    <div class="log-text">Fusion X system booted successfully. Voice services online.</div>
+                    <div class="log-time">Now</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- TAB 2: AAC BOARD (SPEECH COMMUNICATOR) -->
+          <section class="viewport-tab" id="tab-aac">
+            <div class="aac-layout">
+              
+              <!-- Active Sentence Builder Bar -->
+              <div class="aac-sentence-bar">
+                <input type="text" class="aac-input-display scan-target" id="aac-display" placeholder="Select cards below or type to speak..." readonly>
+                <div class="aac-sentence-controls">
+                  <button class="btn btn-primary scan-target" id="aac-btn-speak"><i class="fa-solid fa-volume-high"></i> Speak</button>
+                  <button class="btn btn-secondary scan-target" id="aac-btn-clear"><i class="fa-solid fa-rotate-left"></i> Clear</button>
+                  <button class="btn btn-secondary scan-target" id="aac-btn-add-card"><i class="fa-solid fa-plus"></i> Add Card</button>
+                </div>
+              </div>
+
+              <!-- Main AAC Card Deck & Categories -->
+              <div class="aac-main-grid">
+                
+                <!-- Sidebar Category selectors (Capsule Slider Style) -->
+                <div class="aac-categories">
+                  <div class="capsule-active-backdrop" id="cat-backdrop-slider"></div>
+                  <button class="category-tab active cat-quick scan-target" data-category="quick">
+                    <i class="fa-solid fa-circle-check"></i> Quick Words
+                  </button>
+                  <button class="category-tab cat-needs scan-target" data-category="needs">
+                    <i class="fa-solid fa-hand-holding-heart"></i> Daily Needs
+                  </button>
+                  <button class="category-tab cat-feelings scan-target" data-category="feelings">
+                    <i class="fa-solid fa-face-smile"></i> Emotions
+                  </button>
+                  <button class="category-tab cat-emergency scan-target" data-category="emergency">
+                    <i class="fa-solid fa-shield-halved"></i> Emergency
+                  </button>
+                </div>
+
+                <!-- Grid Cards Container -->
+                <div class="aac-cards-container" id="aac-cards-grid">
+                  <!-- Category cards dynamically populated by aac.js -->
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          <!-- TAB 3: SIMULATED SMART HOME ENVIRONMENT -->
+          <section class="viewport-tab" id="tab-smarthome">
+            <div class="smarthome-grid">
+              
+              <!-- Card 1: Virtual Lightbulbs -->
+              <div class="glass-panel appliance-card" id="appliance-lights">
+                <div class="appliance-info">
+                  <div class="appliance-meta">
+                    <h3>Living Room Lights</h3>
+                    <span>Smart Accent Lighting</span>
+                  </div>
+                  <div class="appliance-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                </div>
+                <div class="appliance-visualizer" style="flex-direction: column; gap: 10px;">
+                  <div class="bulb-glow-circle"></div>
+                  <!-- Dynamic HSL Mood Color Preset Buttons -->
+                  <div class="light-color-presets">
+                    <button class="color-dot active scan-target" data-color="warm" style="background: #f59e0b;" aria-label="Warm Amber Light"></button>
+                    <button class="color-dot scan-target" data-color="blue" style="background: #3b82f6;" aria-label="Cyber Blue Light"></button>
+                    <button class="color-dot scan-target" data-color="pink" style="background: #ec4899;" aria-label="Neon Pink Light"></button>
+                    <button class="color-dot scan-target" data-color="green" style="background: #10b981;" aria-label="Emerald Green Light"></button>
+                  </div>
+                </div>
+                <div class="appliance-toggle">
+                  <button class="btn btn-secondary scan-target toggle-device-btn" style="width: 100%;" data-device="lights">Turn On</button>
+                </div>
+              </div>
+
+              <!-- Card 2: Main Entrance Security Door Lock -->
+              <div class="glass-panel appliance-card" id="appliance-door">
+                <div class="appliance-info">
+                  <div class="appliance-meta">
+                    <h3>Main Entry Door</h3>
+                    <span>Simulated Lock status</span>
+                  </div>
+                  <div class="appliance-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                </div>
+                <div class="appliance-visualizer">
+                  <div class="door-graphic"><i class="fa-solid fa-door-closed" id="door-icon"></i></div>
+                </div>
+                <div class="appliance-toggle">
+                  <button class="btn btn-secondary scan-target toggle-device-btn" style="width: 100%;" data-device="door">Unlock Door</button>
+                </div>
+              </div>
+
+              <!-- Card 3: Air Conditioner / Thermostat -->
+              <div class="glass-panel appliance-card" id="appliance-ac">
+                <div class="appliance-info">
+                  <div class="appliance-meta">
+                    <h3>Smart Thermostat</h3>
+                    <span>Climate control AC</span>
+                  </div>
+                  <div class="appliance-icon"><i class="fa-solid fa-snowflake"></i></div>
+                </div>
+                <div class="appliance-visualizer" style="flex-direction: row; gap: 20px; justify-content: center; align-items: center;">
+                  <div class="hvac-fan-wrapper">
+                    <i class="fa-solid fa-fan" id="hvac-fan-icon"></i>
+                  </div>
+                  <div style="display: flex; flex-direction: column; align-items: center;">
+                    <div class="thermostat-value"><span id="ac-temp-val">22</span>°C</div>
+                    <div class="thermostat-controls" style="margin-top: 6px;">
+                      <button class="thermo-btn scan-target" id="thermo-down" aria-label="Lower Temperature">-</button>
+                      <button class="thermo-btn scan-target" id="thermo-up" aria-label="Increase Temperature">+</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="appliance-toggle">
+                  <button class="btn btn-secondary scan-target toggle-device-btn" style="width: 100%;" data-device="ac">Power Off</button>
+                </div>
+              </div>
+
+              <!-- Card 4: Smart Media Display Simulated Television Screen -->
+              <div class="glass-panel appliance-card" id="appliance-tv">
+                <div class="appliance-info">
+                  <div class="appliance-meta">
+                    <h3>Smart Media Display</h3>
+                    <span>Interactive TV Screen</span>
+                  </div>
+                  <div class="appliance-icon"><i class="fa-solid fa-tv"></i></div>
+                </div>
+                <div class="appliance-visualizer" style="flex-direction: column; overflow: hidden; padding: 10px;">
+                  <div class="tv-screen" id="tv-screen-box">
+                    <div class="tv-static" id="tv-static-effect"></div>
+                    <div class="tv-channel-content" id="tv-channel-view">OFF</div>
+                  </div>
+                </div>
+                <div class="appliance-toggle" style="display: flex; gap: 8px;">
+                  <button class="btn btn-secondary scan-target toggle-device-btn" style="flex-grow: 1;" data-device="tv">Power On</button>
+                  <button class="btn btn-secondary scan-target" id="tv-next-channel" style="width: 48px;" aria-label="Next Media Channel"><i class="fa-solid fa-forward"></i></button>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- TAB 4: EYE & GAZE CONTROLS (CALIBRATION) -->
+          <section class="viewport-tab" id="tab-calibration">
+            <div class="calibration-grid">
+              
+              <!-- Left Camera Frame -->
+              <div class="glass-panel camera-feed-panel">
+                <div class="panel-header">
+                  <h2 class="panel-title"><i class="fa-solid fa-camera"></i> Gaze Webcam Tracker</h2>
+                </div>
+                <div class="camera-preview-wrapper">
+                  <video id="camera-video" autoplay playsinline muted></video>
+                  <canvas id="tracker-canvas"></canvas>
+                  <div class="camera-placeholder" id="camera-placeholder">
+                    <i class="fa-solid fa-video-slash"></i>
+                    <p>Webcam feedback active on tracking initialize</p>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 12px; width: 100%;">
+                  <button class="btn btn-primary scan-target" id="btn-init-camera" style="flex-grow: 1;">
+                    <i class="fa-solid fa-plug-circle-bolt"></i> Initialize Webcam Tracking
+                  </button>
+                  <button class="btn btn-secondary scan-target" id="btn-recalibrate-gaze" style="display: none; border-color: var(--accent-primary); color: #fff;">
+                    <i class="fa-solid fa-arrows-to-eye"></i> Calibrate Center
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right Calibration Guide & Joystick Simulator -->
+              <div class="glass-panel calibration-guide-panel">
+                <div class="panel-header">
+                  <h2 class="panel-title"><i class="fa-solid fa-circle-nodes"></i> Calibration & Simulated Fallback</h2>
+                </div>
+                
+                <div class="calibration-guide-list">
+                  <div class="guide-step">
+                    <div class="step-num">1</div>
+                    <div class="step-text">
+                      <h4>Position Face Clearly</h4>
+                      <p>Center your face in the camera view with normal home lighting. Maintain about 2 feet of distance.</p>
+                    </div>
+                  </div>
+
+                  <div class="guide-step">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                      <h4>Head Motion Control</h4>
+                      <p>Nod your head up, down, left, or right to drift the virtual cursor. Hold your gaze (dwell) over an item for 1.5 seconds to trigger an automatic click!</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Gaze Simulator Joystick Fallback -->
+                <div class="gaze-joystick-panel">
+                  <h4 style="font-family: var(--font-header); font-size: 13px; font-weight: bold; color: var(--text-secondary); width: 100%; text-align: center;">
+                    <i class="fa-solid fa-circle-notch"></i> Simulated Pointer Joystick (Webcam Fallback)
+                  </h4>
+                  <div class="joystick-pad" id="gaze-sim-pad">
+                    <div class="joystick-knob" id="gaze-sim-knob"></div>
+                  </div>
+                  <p style="font-size: 10px; color: var(--text-muted); text-align: center; max-width: 250px;">
+                    Drag the blue dot to simulate head drift. Hover over any target to test Dwell Selection clicking!
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          <!-- TAB 5: ACCESSIBILITY & SETTINGS -->
+          <section class="viewport-tab" id="tab-settings">
+            <div class="settings-grid">
+              
+              <!-- Column A: Interface Customization -->
+              <div class="glass-panel settings-group-panel">
+                <div class="panel-header">
+                  <h2 class="panel-title"><i class="fa-solid fa-eye-low-vision"></i> Display Themes</h2>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-details">
+                    <span class="setting-label">High Contrast Mode</span>
+                    <span class="setting-description">Maximize visibility with solid black background and sharp yellow typography.</span>
+                  </div>
+                  <label class="switch scan-target" id="toggle-wrap-contrast">
+                    <input type="checkbox" id="setting-high-contrast">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-details">
+                    <span class="setting-label">Dyslexia Typography</span>
+                    <span class="setting-description">Use custom spaced font faces to enhance letter readability and ease parsing.</span>
+                  </div>
+                  <label class="switch scan-target" id="toggle-wrap-dyslexic">
+                    <input type="checkbox" id="setting-dyslexic-font">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-details">
+                    <span class="setting-label">Colorblindness Profile</span>
+                    <span class="setting-description">Apply digital matrix correction filters on current workspace.</span>
+                  </div>
+                  <select class="custom-select scan-target" id="setting-colorblind">
+                    <option value="none">Standard Color</option>
+                    <option value="protanopia">Protanopia (Red Weak)</option>
+                    <option value="deuteranopia">Deuteranopia (Green Weak)</option>
+                    <option value="tritanopia">Tritanopia (Blue Weak)</option>
+                    <option value="monochrome">Monochrome / Grayscale</option>
+                  </select>
+                </div>
+
+                <div class="setting-row">
+                  <div class="setting-details">
+                    <span class="setting-label">Large Pointer & Sizing</span>
+                    <span class="setting-description">Activate double cursor scale and base text scaling factor.</span>
+                  </div>
+                  <label class="switch scan-target" id="toggle-wrap-cursor">
+                    <input type="checkbox" id="setting-large-cursor">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+              </div>
+
+              <!-- Column B: Navigation Speed Parameters -->
+              <div class="glass-panel settings-group-panel">
+                <div class="panel-header">
+                  <h2 class="panel-title"><i class="fa-solid fa-gauge-high"></i> Motion & Scan Controls</h2>
+                </div>
+
+                <div class="sensitivity-sliders">
+                  
+                  <div class="slider-group">
+                    <div class="slider-header">
+                      <span>Switch Scan Speed</span>
+                      <span><span id="label-scan-speed">2.0</span>s</span>
+                    </div>
+                    <input type="range" class="range-slider scan-target" id="setting-scan-speed" min="0.5" max="5.0" step="0.5" value="2.0">
+                  </div>
+
+                  <div class="slider-group">
+                    <div class="slider-header">
+                      <span>Gaze Cursor Sensitivity</span>
+                      <span><span id="label-gaze-speed">1.5</span>x</span>
+                    </div>
+                    <input type="range" class="range-slider scan-target" id="setting-gaze-speed" min="0.5" max="3.0" step="0.25" value="1.5">
+                  </div>
+
+                  <div class="slider-group">
+                    <div class="slider-header">
+                      <span>Gaze Dwell Click Timer</span>
+                      <span><span id="label-dwell-time">1.5</span>s</span>
+                    </div>
+                    <input type="range" class="range-slider scan-target" id="setting-dwell-time" min="0.5" max="3.0" step="0.25" value="1.5">
+                  </div>
+
+                </div>
+
+                <!-- Text Speech Synthesis Voice profiles -->
+                <div class="setting-row" style="margin-top: 12px;">
+                  <div class="setting-details">
+                    <span class="setting-label">Synthesized Voice</span>
+                    <span class="setting-description">Select default text-to-speech speaker voice.</span>
+                  </div>
+                  <select class="custom-select scan-target" id="setting-voice-select" style="max-width: 150px;">
+                    <!-- Dynamically populated voice options -->
+                  </select>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Bottom Assistant Status Dock -->
+        <footer class="system-bottomdock">
+          <div class="assistant-bar">
+            <div class="assistant-mic-indicator" id="voice-indicator">
+              <i class="fa-solid fa-microphone"></i>
+            </div>
+            <div class="assistant-status-text">
+              Voice Assistant listening: <span id="voice-transcript" class="quick-voice-indicator">Say "hey fusion" or issuing home commands...</span>
+            </div>
+          </div>
+          <!-- Canvas Audio Visualizer -->
+          <div style="flex-grow: 0; padding: 0 20px; display: flex; align-items: center;">
+            <canvas id="audio-visualizer" width="160" height="30"></canvas>
+          </div>
+          <div style="font-family: var(--font-header); font-size: var(--font-size-xs); color: var(--text-muted); font-weight: 700;">
+            Universal Switch: <span class="quick-voice-indicator" style="background: rgba(244, 63, 94, 0.15); color: var(--accent-scan);">[Spacebar]</span>
+          </div>
+        </footer>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Accessibility Overlay layers -->
+  
+  <!-- Virtual Gaze Cursor -->
+  <div id="gaze-cursor">
+    <div id="gaze-cursor-dot"></div>
+    <div id="gaze-dwell-progress"></div>
+  </div>
+
+  <!-- Dynamic AAC Custom Card Creation Modal -->
+  <div class="sos-overlay" id="aac-modal-add-card" style="background: rgba(0, 0, 0, 0.85);">
+    <div class="sos-overlay-content" style="border-color: var(--accent-primary); text-align: left; padding: 36px; width: 420px; box-shadow: 0 0 40px rgba(var(--accent-primary-rgb), 0.35);">
+      <h2 style="font-family: var(--font-header); font-size: var(--font-size-xl); font-weight: bold; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; color: #fff;">
+        <i class="fa-solid fa-circle-plus" style="color: var(--accent-primary);"></i> Add Custom Phrase Card
+      </h2>
+      <form id="aac-new-card-form" style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="slider-group">
+          <label class="setting-label" for="aac-new-label">Card Label (Display)</label>
+          <input type="text" id="aac-new-label" class="custom-select" style="width: 100%; font-size: 14px;" placeholder="e.g. Call Nurse" required>
+        </div>
+        <div class="slider-group">
+          <label class="setting-label" for="aac-new-text">Spoken Sentence (TTS)</label>
+          <input type="text" id="aac-new-text" class="custom-select" style="width: 100%; font-size: 14px;" placeholder="e.g. Please call the nurse on duty" required>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="slider-group">
+            <label class="setting-label" for="aac-new-emoji">Symbol / Emoji</label>
+            <input type="text" id="aac-new-emoji" class="custom-select" style="width: 100%; font-size: 14px; text-align: center;" placeholder="🏥" maxlength="3" required>
+          </div>
+          <div class="slider-group">
+            <label class="setting-label" for="aac-new-cat">Board Grid</label>
+            <select id="aac-new-cat" class="custom-select" style="width: 100%; font-size: 14px;">
+              <option value="quick">Quick Words</option>
+              <option value="needs">Daily Needs</option>
+              <option value="feelings">Emotions</option>
+              <option value="emergency">Emergency</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; margin-top: 14px;">
+          <button type="submit" class="btn btn-primary scan-target" id="aac-submit-card" style="flex-grow: 1;">Save Card</button>
+          <button type="button" class="btn btn-secondary scan-target" id="aac-cancel-card" style="flex-grow: 1;">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Full-Screen Emergency SOS overlay modal with safety abort countdown timer -->
+  <div class="sos-overlay" id="global-sos-overlay">
+    <div class="sos-overlay-content">
+      <!-- Countdown timer ring -->
+      <div class="sos-countdown-circle" id="sos-countdown-ring">
+        <span id="sos-countdown-num">5</span>
+      </div>
+      <div class="sos-overlay-icon" id="sos-siren-symbol" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <h1 id="sos-header-text">SOS EMERGENCY INITIALIZING</h1>
+      <p id="sos-desc-text">Broadcasting distress signal in 5 seconds. Press the button below immediately to abort.</p>
+      
+      <button class="btn btn-danger scan-target" style="padding: 16px 32px; font-size: var(--font-size-base); text-transform: uppercase;" id="global-sos-cancel">
+        Abort Distress Beacon
+      </button>
+    </div>
+  </div>
+
+  <!-- SVG Filters for Color Blindness Simulation -->
+  <svg class="colorblind-filters" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Protanopia Filter -->
+      <filter id="protanopia-filter">
+        <feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0
+                                            0.558, 0.442, 0, 0, 0
+                                            0, 0.242, 0.758, 0, 0
+                                            0, 0, 0, 1, 0"/>
+      </filter>
+      <!-- Deuteranopia Filter -->
+      <filter id="deuteranopia-filter">
+        <feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0
+                                            0.7, 0.3, 0, 0, 0
+                                            0, 0.3, 0.7, 0, 0
+                                            0, 0, 0, 1, 0"/>
+      </filter>
+      <!-- Tritanopia Filter -->
+      <filter id="tritanopia-filter">
+        <feColorMatrix type="matrix" values="0.95, 0.05,  0, 0, 0
+                                            0,  0.433, 0.567, 0, 0
+                                            0,  0.475, 0.525, 0, 0
+                                            0,  0,  0, 1, 0"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Core Javascript Module Loader -->
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "fusion-x",
+  "version": "1.0.0",
+  "description": "Fusion X - Universal Assistive Hub for differently-abled individuals",
+  "main": "app.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
