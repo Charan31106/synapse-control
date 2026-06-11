@@ -1,6 +1,6 @@
-# FUSION X
+# Synapse Control
 
-**Fusion X** is a universal assistive hub explicitly designed for differently-abled individuals. It acts as a cohesive operating system bridging multiple assistive technologies into a single, seamless, and stunning interface.
+**Synapse Control** is a universal assistive hub explicitly designed for differently-abled individuals. It acts as a cohesive operating system bridging multiple assistive technologies into a single, seamless, and stunning interface.
 
 ## Features
 
@@ -26,8 +26,8 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/fusion-x.git
-   cd fusion-x
+   git clone https://github.com/Charan31106/synapse-control.git
+   cd synapse-control
    ```
 
 2. Install dependencies:
