@@ -1,5 +1,5 @@
 /**
- * FUSION X - Core Application Orchestration Engine
+ * SYNAPSE CONTROL - Core Application Orchestration Engine
  * Coordinates state, UI navigation, WebAudio sound synthesis, and accessibility layers.
  */
 
@@ -585,7 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', plotSystemChart);
 
   // Log Startup success
-  logSystemEvent('Fusion X Command Center operational.', 'info');
+  logSystemEvent('Synapse Control Command Center operational.', 'info');
 
   // Request audio activation on first keypress/click
   window.addEventListener('click', initAudio, { once: true });

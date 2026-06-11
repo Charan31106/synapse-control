@@ -1,5 +1,5 @@
 /**
- * FUSION X - Switch Access & step Scanning Engine
+ * SYNAPSE CONTROL - Switch Access & step Scanning Engine
  * Sequentially highlights visible scan targets at custom speeds for single-switch accessibility.
  */
 

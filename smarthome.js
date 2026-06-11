@@ -1,5 +1,5 @@
 /**
- * FUSION X - Simulated Smart Home Environment
+ * SYNAPSE CONTROL - Simulated Smart Home Environment
  * Manages device states, thermostat climate controls, mood lighting, simulated Smart TV channels, and Abort-Countdown SOS.
  */
 
@@ -19,7 +19,7 @@ export const homeDevices = {
 const tvChannels = [
   { name: 'RETRO GAMING', emoji: '🎮👾🛸', desc: 'Space Invaders active. High score: 9240' },
   { name: 'RELAXING NATURE', emoji: '🌲🌊🏔️', desc: 'Alpine stream ambiance active. Sunset view' },
-  { name: 'LIVE HOME NEWS', emoji: '📰🎙️⚡', desc: 'Fusion X weekly brief. Weather: 22°C Clear' }
+  { name: 'LIVE HOME NEWS', emoji: '📰🎙️⚡', desc: 'Synapse Control weekly brief. Weather: 22°C Clear' }
 ];
 
 // Audio interval timers

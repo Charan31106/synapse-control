@@ -1,5 +1,5 @@
 /**
- * FUSION X - Voice Command Center
+ * SYNAPSE CONTROL - Voice Command Center
  * Integrates Web Speech Recognition API to parse accessibility commands and control hub modules.
  */
 

@@ -1,5 +1,5 @@
 /**
- * FUSION X - Gaze & Head Gesture Tracker
+ * SYNAPSE CONTROL - Gaze & Head Gesture Tracker
  * Integrates MediaPipe Face Landmarker for camera tracking and drives the dwell-click pointer simulator.
  */
 

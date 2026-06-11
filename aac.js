@@ -1,5 +1,5 @@
 /**
- * FUSION X - AAC Board (Speech Communicator)
+ * SYNAPSE CONTROL - AAC Board (Speech Communicator)
  * Manages Augmentative and Alternative Communication cards, sentence building, and Text-to-Speech (TTS).
  */
 
