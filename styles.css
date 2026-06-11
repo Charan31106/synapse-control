@@ -491,13 +491,25 @@ html, body {
 }
 
 .viewport-tab {
-  display: none;
+  position: absolute;
+  top: 32px;
+  left: 40px;
+  right: 40px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
   height: 100%;
   animation: fade-in 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .viewport-tab.active {
-  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: auto;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 @keyframes fade-in {
